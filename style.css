@@ -543,7 +543,7 @@ span {
   margin: 0 0 1.5rem 2rem;
   margin-bottom: 3rem;
   margin-top: 4rem;
-  text-align: center;
+  
 }
 .education-column .education-box {
   border-left: 0.2rem solid var(--main-color);
@@ -618,7 +618,7 @@ span {
   margin: 0 0 0 1.5rem;
   margin-top: 4rem;
   margin-bottom: 3rem;
-  text-align: center;
+  
 }
 .skills-box .skills-content {
   position: relative;
