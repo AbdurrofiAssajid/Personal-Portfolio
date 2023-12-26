@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- main css -->
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/input.css">
  
 
   <!-- icon -->
@@ -40,9 +41,10 @@
   <section class="home" id="home">
 
     <div class="home-content">
-      <h3><span>Hello!</span>, My Name is</h3>
-      <h1>Abdurrofi'i Assajid</h1>
-      <h3>And I'am a <span class="multiple-text"></span></h3>
+      
+      <h3><i> <span>Hello</span> Everyone!</i> </h3>
+      <!-- <h1>Abdurrofi'i Assajid</h1> -->
+      <h1>  I'am  <span class="multiple-text"></span></h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero illum
         sit corrupti ducimus tempore sed assumenda enim magni incidunt quia
@@ -59,7 +61,7 @@
       <a href="#" class="btn">Download CV</a>
     </div>
     <div class="home-img">
-      <img src="assets/profile_1-removebg-preview.png" />
+      <img src="assets/about.png" />
     </div>
 
   </section>
@@ -67,11 +69,11 @@
   <!-- about section start -->
   <section class="about" id="about">
     <div class="about-img">
-      <img src="assets/profile_1-removebg-preview.png" alt="" />
+      <img src="assets/about.png" alt="" />
     </div>
     <div class="about-content">
       <h2 class="heading">About <span>Me</span></h2>
-      <h3 id="typed-text">Fullstack Developer!</h3>
+      <h3> <span id="typed-text"></span></h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quod
         necessitatibus eveniet provident cum vel vitae. Adipisci a ipsa, hic
@@ -79,14 +81,14 @@
       </p>
       <a href="aboutme.html" class="btn">Read More</a>
     </div>
-    <div class="footer-iconTop">
+    <!-- <div class="footer-iconTop">
       <a href="#home"><i class='bx bx-chevrons-up'></i></a>
-    </div>
+    </div> -->
   </section>
 
   <!-- services section start -->
   <section class="services" id="services">
-    <h2 class="heading">Our <span>Services</span></h2>
+    <h2 class="heading">My <span>Services</span></h2>
 
     <div class="services-container">
       <div class="services-box">
@@ -183,25 +185,39 @@
   <section class="contact" id="contact">
     <h2 class="heading">Contact <span>Me!</span></h2>
 
-    <form name="My-Portfolio-contact-me">
+    <form name="My-Portfolio-contact-me" id="My-Portfolio-contact-me">
       <div class="input-box">
-        <input type="text" placeholder="john doe" name="name" />
-        <input type="email" placeholder="johndoe@gmail.com" name="email" />
+        <input type="text" placeholder="Your name"  name="name" />
+        <input type="email" placeholder="Your email" name="email" />
       </div>
       <div class="input-box">
-        <input type="text" placeholder="+627648580984" name="phone-number" />
-        <input type="text" placeholder=" Offering a job" name="subject" />
+        <input type="number" placeholder="Phone number" name="phone-number" />
+        <input type="text" placeholder=" subject" name="subject" />
       </div>
-      <textarea cols="30" rows="10" placeholder="Do you want some jobs? join us." name="messages">
-      </textarea> <br>
-       <div class="btn-send">
-         <input type="submit" value="Send" class="btn " />    
-       </div>
-
-      <!-- custom loading -->
       
+        <textarea cols="30" rows="10" placeholder="Messages" name="messages"></textarea>
+
+
+        <div class="btn-send" id="btnSend">
+          <input type="submit" value="Send" class="btn" />
+      </div>
+
+      <style>
+        .d-none {
+            display: none;
+            margin-bottom: 1.1rem;
+        }
+        #loadingBtn {
+          background-color: var(--second-bg-color);
+          color: var(--text-color);
+          margin-top: 2rem;
+
+        }
+    </style>
+
+      <button class="btn-loading d-none" type="button" id="loadingBtn">Processing...</button>
+  
     </form>
-    <button class="btn-loading" type="button" >processing...
 
       
    
@@ -210,6 +226,7 @@
 
   <!-- footer start -->
   <footer class="footer" >
+    <div class="tenor-gif-embed" data-postid="8126276" data-share-method="host" data-aspect-ratio="1.23333" data-width="100%"><a href="https://tenor.com/view/cat-watching-you-cartoon-anime-gif-8126276">Cat Watching You GIF</a>from <a href="https://tenor.com/search/cat-gifs">Cat GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
       <div class=" container">
     <div class="row">
       <div class="footer-col">
@@ -247,14 +264,15 @@
           <a href=""> <i class="fab fa-twitter"></i></a>
           <a href=""> <i class="fab fa-github"></i></a>
           <a href=""> <i class="fab fa-linkedin-in"></i></a>
-
+          <br>
+          <button onclick="myFunction()" class="btn-try">Click Me</button>
+          
         </div>
-      </div>
-
+      </div>     
     </div>
-
+    
     </div>
-
+  
   </footer>
 
   <p>Copyright &copy; 2023 by Abdurrofi'i Assajid | All Right Reserved</p>
@@ -269,9 +287,17 @@
 
     <!-- typed js -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Add this script tag to your HTML file -->
 
   <!-- custom js -->
   <script src="script.js"></script>
+
+
+
+
+
+
+
 
 </body>
 

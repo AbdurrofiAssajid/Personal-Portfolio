@@ -33,56 +33,99 @@ window.onscroll = () => {
 };
 
 // scrollreveal
-ScrollReveal ({
+ScrollReveal({
     reset: true,
-    distance: '80px', 
-    duration: 1000, 
+    distance: '80px',
+    duration: 1000,
     delay: 100
 });
 
-ScrollReveal().reveal('.home-content, .heading', {origin: 'top'});
-ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form, .education-box, .skills-box', {origin: 'bottom'});
-ScrollReveal().reveal('.home-content h1, .about-img, .title ', {origin: 'left'});
-ScrollReveal().reveal('.home-content p, .about-content', {origin: 'right'});
+ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form, .education-box, .skills-box', { origin: 'bottom' });
+ScrollReveal().reveal('.home-content h1, .about-img, .title ', { origin: 'left' });
+ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
 
 //typed js
-
-const typed = new Typed ('.multiple-text',  { 
-    strings: ['Software Engineer', 'Programmer', 'UI-UX Designer'],
-    typeSpeed: 100, 
-    backSpeed: 100, 
-    backDelay: 2000, 
+const typedMultipleText = new Typed('.multiple-text', {
+    strings: [ "Abdurrofi'i Assajid", " a Software Engineer", " a Programmer", " a UI-UX Designer"],
+    typeSpeed: 50,
+    backSpeed: 20,
+    backDelay: 1000,
     loop: true
 });
 
 
 
-//google sheets for contact me
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwwwN_n1cc3_c0BLlSFCXnzgBGrESVKprZVPZS6YuR-_jnmbeosN6wqsxBl_cKwqiW1/exec';
-const form = document.forms['My-Portfolio-contact-me'];
-const btnSend = document.querySelector('.btn-send');
-const btnLoading = document.querySelector('.btn-loading');
+const typedTextElement = document.getElementById('typed-text');
 
-form.addEventListener('submit', (e) => {
+
+if (typeof typedText === 'undefined') {
+    // Set up Typed.js
+    const options = {
+        strings: [ 'if you are curious about me', 'Click the "read more " button below ! '],
+        typeSpeed: 60, // typing speed in milliseconds
+        backSpeed: 10,
+         // backspacing speed in milliseconds
+        loop: true, // loop the animation
+    };
+
+    // Declare 'typedText' using let to avoid block-scoping issues
+    let typedText = new Typed(typedTextElement, options);
+}
+
+//google sheets for contact me
+
+const form = document.getElementById('My-Portfolio-contact-me');
+const btnSend = document.getElementById('btnSend');
+const btnLoading = document.getElementById('loadingBtn');
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwwwN_n1cc3_c0BLlSFCXnzgBGrESVKprZVPZS6YuR-_jnmbeosN6wqsxBl_cKwqiW1/exec';
+
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    btnSend.classList.toggle('hidden');
-    btnLoading.classList.toggle('hidden');
+    // Menyembunyikan tombol "btn-send" dan menampilkan tombol "btn-loading"
+    btnSend.classList.add('d-none');
+    btnLoading.classList.remove('d-none');
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-            btnSend.classList.toggle('hidden');
-            btnLoading.classList.toggle('hidden');
-            console.log('Success!', response);
+    try {
+        const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
 
-            // Tambahkan alert di sini
-            alert('We have received your message');
+        // Menyembunyikan tombol "btn-loading"
+        btnLoading.classList.add('d-none');
+
+        console.log('Success!', response);
+
+        // Tambahkan alert di sini
+        window.confirm('We have received your message') 
             form.reset();
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            // Tambahkan alert untuk kesalahan di sini jika diperlukan
-            alert('An error occurred while submitting the form.');
-        });
+        
+        form.reset();
+
+        // Menampilkan kembali tombol "btn-send" setelah alert muncul
+        btnSend.classList.remove('d-none');
+    } catch (error) {
+        console.error('Error!', error.message);
+        // Tambahkan alert untuk kesalahan di sini jika diperlukan
+        alert('An error occurred while submitting the form.');
+
+        // Kembalikan tampilan tombol ke awal jika terjadi kesalahan
+        btnSend.classList.remove('d-none');
+        btnLoading.classList.add('d-none');
+    }
 });
+
+
+//ucapan terimakasih
+function myFunction() {
+    let text;
+    let person = prompt("Please enter your name:", "")
+    if (person == null || person == "") {
+      text = "User cancelled the prompt.";
+    } else {
+      text = "Hey " + person + "! Thank you for visiting, enjoy your day";
+      // Add an alert here
+      alert(text);
+    }
+    document.getElementById("demo").innerHTML = text;
+  }
